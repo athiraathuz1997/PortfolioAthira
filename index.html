@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Athira Balachandran | Frontend Developer</title>
+<meta name="description" content="Athira Balachandran - Frontend / UI Developer based in Abu Dhabi, UAE. React, JavaScript, Figma, Dynamics 365.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#07060d; --bg2:#0e0c1a; --card:rgba(255,255,255,.04); --line:rgba(255,255,255,.1);
+  --text:#ecebf5; --muted:#9a98b3; --a:#8b5cf6; --b:#22d3ee; --c:#f472b6;
+  --grad:linear-gradient(120deg,var(--a),var(--b));
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Inter,system-ui,sans-serif;line-height:1.65;overflow-x:hidden}
+h1,h2,h3,.logo{font-family:'Space Grotesk',sans-serif}
+a{color:inherit;text-decoration:none}
+#bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+main,header,footer{position:relative;z-index:1}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:0;
+  background:radial-gradient(circle,rgba(139,92,246,.18),transparent 65%);transform:translate(-50%,-50%);left:50%;top:50%}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:20;padding:14px 0;backdrop-filter:blur(14px);
+  background:rgba(7,6,13,.55);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:700;font-size:1.25rem;letter-spacing:.5px}
+.logo span{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+nav ul{display:flex;gap:28px;list-style:none}
+nav ul a{font-size:.92rem;color:var(--muted);transition:.25s;position:relative}
+nav ul a:hover,nav ul a.on{color:#fff}
+nav ul a::after{content:"";position:absolute;left:0;bottom:-4px;height:2px;width:0;background:var(--grad);transition:.3s}
+nav ul a:hover::after,nav ul a.on::after{width:100%}
+.burger{display:none;background:none;border:0;color:#fff;font-size:1.6rem;cursor:pointer}
+
+/* hero */
+.hero{min-height:100vh;display:flex;align-items:center;padding-top:80px}
+.hero .wrap{display:grid;grid-template-columns:1.15fr .85fr;gap:40px;align-items:center}
+.tag{display:inline-flex;gap:8px;align-items:center;padding:6px 14px;border:1px solid var(--line);border-radius:99px;
+  background:var(--card);font-size:.82rem;color:var(--muted);margin-bottom:22px}
+.tag i{width:8px;height:8px;border-radius:50%;background:#4ade80;box-shadow:0 0 10px #4ade80;animation:pulse 2s infinite}
+@keyframes pulse{50%{opacity:.35}}
+.hero h1{font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.05;font-weight:700;letter-spacing:-1.5px}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.role{font-family:'Space Grotesk';font-size:clamp(1.2rem,2.6vw,1.7rem);margin:16px 0;color:#d7d5ea;min-height:2.2rem}
+.role b{color:var(--b);font-weight:500}
+.caret{display:inline-block;width:2px;height:1.2em;background:var(--b);margin-left:3px;vertical-align:-3px;animation:blink 1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+.hero p.lead{color:var(--muted);max-width:520px;margin-bottom:30px}
+.btns{display:flex;gap:14px;flex-wrap:wrap}
+.btn{padding:13px 26px;border-radius:12px;font-weight:500;font-size:.95rem;transition:.3s;cursor:pointer;border:1px solid var(--line);
+  display:inline-flex;gap:8px;align-items:center}
+.btn.primary{background:var(--grad);border:0;color:#08060f;font-weight:600;box-shadow:0 10px 30px -8px rgba(139,92,246,.7)}
+.btn:hover{transform:translateY(-3px)}
+.btn.ghost:hover{background:var(--card);border-color:rgba(255,255,255,.3)}
+.stats{display:flex;gap:34px;margin-top:44px}
+.stats b{font-family:'Space Grotesk';font-size:2rem;display:block;line-height:1}
+.stats span{font-size:.8rem;color:var(--muted)}
+
+/* avatar */
+.avatar-box{position:relative;display:grid;place-items:center;height:440px}
+.ring{position:absolute;width:380px;height:380px;border-radius:50%;border:1px dashed rgba(139,92,246,.5);animation:spin 28s linear infinite}
+.ring.r2{width:320px;height:320px;border-color:rgba(34,211,238,.45);animation-duration:20s;animation-direction:reverse}
+.ring::after{content:"";position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--b);box-shadow:0 0 16px var(--b)}
+.ring.r2::after{background:var(--c);box-shadow:0 0 16px var(--c)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.avatar{position:relative;width:300px;height:340px;animation:float 5s ease-in-out infinite;filter:drop-shadow(0 25px 40px rgba(139,92,246,.45));transform-style:preserve-3d}
+@keyframes float{50%{transform:translateY(-14px)}}
+.avatar svg{width:100%;height:100%;overflow:visible}
+.avatar .photo{display:none;width:300px;height:340px;object-fit:cover;border-radius:46% 54% 50% 50%/55% 45% 55% 45%;animation:morph 9s ease-in-out infinite}
+.avatar.has-photo svg{display:none}.avatar.has-photo .photo{display:block}
+@keyframes morph{50%{border-radius:55% 45% 45% 55%/45% 55% 45% 55%}}
+.eye{transform-origin:center;transform-box:fill-box;animation:eyeblink 5s infinite}
+@keyframes eyeblink{0%,93%,100%{transform:scaleY(1)}96%{transform:scaleY(.08)}}
+.hairsway{transform-origin:150px 40px;animation:sway 6s ease-in-out infinite}
+@keyframes sway{50%{transform:rotate(1.6deg)}}
+.chip{position:absolute;padding:8px 14px;border-radius:12px;background:rgba(20,17,36,.8);border:1px solid var(--line);
+  backdrop-filter:blur(8px);font-size:.8rem;font-family:'Space Grotesk';animation:float 6s ease-in-out infinite}
+.chip.c1{top:40px;left:0;animation-delay:-1s}.chip.c2{top:90px;right:-10px;animation-delay:-3s}.chip.c3{bottom:60px;left:10px;animation-delay:-2s}
+
+/* sections */
+section{padding:110px 0}
+.eyebrow{color:var(--b);font-size:.8rem;letter-spacing:3px;text-transform:uppercase;font-weight:600}
+h2{font-size:clamp(2rem,4vw,3rem);margin:8px 0 46px;letter-spacing:-1px}
+.reveal{opacity:0;transform:translateY(34px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.about-grid p{color:#bdbbd2;margin-bottom:16px}
+.facts{display:grid;gap:14px}
+.fact{padding:18px 20px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.fact small{color:var(--muted);display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:1px}
+.fact div{font-weight:500}
+
+.skills{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+.card{padding:26px;border-radius:20px;background:var(--card);border:1px solid var(--line);transition:border-color .3s,box-shadow .3s;
+  transform-style:preserve-3d;will-change:transform}
+.card:hover{border-color:rgba(139,92,246,.6);box-shadow:0 20px 50px -20px rgba(139,92,246,.5)}
+.card h3{font-size:1.1rem;margin-bottom:14px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pills span{padding:5px 12px;border-radius:99px;font-size:.8rem;background:rgba(139,92,246,.12);border:1px solid rgba(139,92,246,.3);color:#d8ccff}
+.bar{height:6px;border-radius:9px;background:rgba(255,255,255,.08);margin:6px 0 14px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--grad);border-radius:9px;transition:width 1.4s cubic-bezier(.2,.7,.2,1)}
+.lab{display:flex;justify-content:space-between;font-size:.85rem}
+
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+.proj .thumb{height:160px;border-radius:14px;margin-bottom:18px;display:grid;place-items:center;font-family:'Space Grotesk';font-size:1.5rem;
+  font-weight:700;position:relative;overflow:hidden}
+.proj .thumb::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 30%,rgba(255,255,255,.18) 50%,transparent 70%);
+  transform:translateX(-120%);transition:.9s}
+.proj:hover .thumb::after{transform:translateX(120%)}
+.t1{background:linear-gradient(135deg,#6d28d9,#0ea5e9)}.t2{background:linear-gradient(135deg,#b91c1c,#18181b)}.t3{background:linear-gradient(135deg,#0f766e,#7c3aed)}
+.proj p{color:var(--muted);font-size:.92rem;margin-bottom:14px}
+.proj a.lnk{color:var(--b);font-size:.9rem;font-weight:500}
+
+.timeline{position:relative;padding-left:30px;max-width:820px}
+.timeline::before{content:"";position:absolute;left:6px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--a),var(--b),transparent)}
+.tl{position:relative;margin-bottom:30px}
+.tl::before{content:"";position:absolute;left:-30px;top:8px;width:14px;height:14px;border-radius:50%;background:var(--bg);border:2px solid var(--b);box-shadow:0 0 14px var(--b)}
+.tl .when{font-size:.8rem;color:var(--b);letter-spacing:1px;text-transform:uppercase}
+.tl h3{font-size:1.2rem;margin:2px 0}
+.tl .org{color:var(--muted);font-size:.92rem;margin-bottom:8px}
+.tl p{color:#bdbbd2;font-size:.94rem}
+.two{display:grid;grid-template-columns:1.3fr 1fr;gap:50px}
+.edu .card{margin-bottom:16px}.edu .card small{color:var(--muted)}
+
+.contact{text-align:center}
+.contact .box{padding:60px 24px;border-radius:28px;border:1px solid var(--line);
+  background:radial-gradient(circle at 50% 0%,rgba(139,92,246,.22),transparent 60%),var(--card)}
+.contact h2{margin-bottom:12px}
+.contact p{color:var(--muted);max-width:520px;margin:0 auto 28px}
+.contact .btns{justify-content:center}
+footer{padding:30px 0;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line)}
+
+@media(max-width:860px){
+  .hero .wrap,.about-grid,.two{grid-template-columns:1fr}
+  .avatar-box{height:380px;order:-1;transform:scale(.85)}
+  nav ul{position:fixed;top:56px;right:0;left:0;flex-direction:column;background:rgba(7,6,13,.95);padding:20px 24px;gap:16px;display:none}
+  nav ul.open{display:flex}.burger{display:block}
+  section{padding:80px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas>
+<div class="glow" id="glow"></div>
+
+<nav>
+  <div class="wrap">
+    <a href="#home" class="logo">Athira<span>.dev</span></a>
+    <button class="burger" id="burger" aria-label="Menu">&#9776;</button>
+    <ul id="menu">
+      <li><a href="#home" class="on">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div>
+      <div class="tag"><i></i> Open to opportunities &middot; Abu Dhabi, UAE</div>
+      <h1>Hi, I'm <span class="grad">Athira Balachandran</span></h1>
+      <div class="role">I'm a <b id="typed"></b><span class="caret"></span></div>
+      <p class="lead">Frontend developer who turns designs into fast, responsive and delightful interfaces with React, JavaScript and Figma, and keeps business systems running smoothly with Dynamics 365.</p>
+      <div class="btns">
+        <a href="#projects" class="btn primary">View my work &rarr;</a>
+        <a href="#contact" class="btn ghost">Get in touch</a>
+        <a href="https://github.com/athiraathuz1997" target="_blank" rel="noopener" class="btn ghost">GitHub &#8599;</a>
+      </div>
+      <div class="stats">
+        <div><b data-count="1.7" data-dec="1">0</b><span>Years experience</span></div>
+        <div><b data-count="3">0</b><span>Roles &amp; internships</span></div>
+        <div><b data-count="2">0</b><span>Certifications</span></div>
+      </div>
+    </div>
+
+    <div class="avatar-box">
+      <div class="ring"></div><div class="ring r2"></div>
+      <div class="avatar" id="avatar">
+        <!-- Stylised animated avatar. To use a real photo instead, set CONFIG.photo below. -->
+        <svg viewBox="0 0 300 340" xmlns="http://www.w3.org/2000/svg" aria-label="Animated illustration of Athira">
+          <defs>
+            <linearGradient id="top" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#22d3ee"/></linearGradient>
+            <linearGradient id="hair" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2a1a2e"/><stop offset="1" stop-color="#120a16"/></linearGradient>
+            <radialGradient id="skin" cx=".4" cy=".35" r=".8"><stop offset="0" stop-color="#e9b48d"/><stop offset="1" stop-color="#c98d65"/></radialGradient>
+          </defs>
+          <!-- body -->
+          <path d="M40 340 C40 270 90 245 150 245 C210 245 260 270 260 340 Z" fill="url(#top)"/>
+          <path d="M120 245 L150 290 L180 245 Z" fill="#0e0c1a" opacity=".35"/>
+          <!-- neck -->
+          <rect x="128" y="205" width="44" height="52" rx="16" fill="#c98d65"/>
+          <!-- hair back + bun -->
+          <g class="hairsway">
+            <circle cx="150" cy="30" r="34" fill="url(#hair)"/>
+            <path d="M62 130 C55 55 100 38 150 38 C200 38 245 55 238 130 C236 180 215 215 190 225 L110 225 C85 215 64 180 62 130Z" fill="url(#hair)"/>
+          </g>
+          <!-- face -->
+          <ellipse cx="150" cy="140" rx="64" ry="76" fill="url(#skin)"/>
+          <!-- ears + earrings -->
+          <circle cx="86" cy="148" r="10" fill="#c98d65"/><circle cx="214" cy="148" r="10" fill="#c98d65"/>
+          <circle cx="86" cy="167" r="4" fill="#fbbf24"/><circle cx="214" cy="167" r="4" fill="#fbbf24"/>
+          <!-- fringe -->
+          <path d="M86 112 C100 70 150 60 150 60 C150 60 205 70 214 112 C190 92 150 88 120 98 C105 102 94 108 86 112Z" fill="url(#hair)"/>
+          <!-- brows -->
+          <path d="M108 112 Q122 104 136 111" stroke="#1c1020" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <path d="M164 111 Q178 104 192 112" stroke="#1c1020" stroke-width="4" stroke-linecap="round" fill="none"/>
+          <!-- eyes -->
+          <g class="eye"><ellipse cx="123" cy="134" rx="9" ry="10" fill="#fff"/><circle cx="125" cy="135" r="6" fill="#2b1a14"/><circle cx="127" cy="132" r="2" fill="#fff"/></g>
+          <g class="eye"><ellipse cx="177" cy="134" rx="9" ry="10" fill="#fff"/><circle cx="179" cy="135" r="6" fill="#2b1a14"/><circle cx="181" cy="132" r="2" fill="#fff"/></g>
+          <!-- glasses -->
+          <g stroke="#22d3ee" stroke-width="3" fill="rgba(34,211,238,.08)">
+            <rect x="104" y="118" width="40" height="34" rx="13"/><rect x="156" y="118" width="40" height="34" rx="13"/>
+          </g>
+          <path d="M144 134 H156" stroke="#22d3ee" stroke-width="3"/>
+          <!-- nose, cheeks, smile -->
+          <path d="M150 146 Q146 164 152 166" stroke="#a96d48" stroke-width="3" stroke-linecap="round" fill="none"/>
+          <circle cx="108" cy="170" r="10" fill="#f472b6" opacity=".25"/><circle cx="192" cy="170" r="10" fill="#f472b6" opacity=".25"/>
+          <path d="M128 184 Q150 205 172 184" stroke="#7a2e3a" stroke-width="4.5" stroke-linecap="round" fill="none"/>
+        </svg>
+        <img class="photo" id="photo" alt="Athira">
+      </div>
+      <div class="chip c1">&lt;/&gt; React</div>
+      <div class="chip c2">&#10022; UI / UX</div>
+      <div class="chip c3">&#9889; Dynamics 365</div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <div class="eyebrow reveal">About me</div>
+    <h2 class="reveal">Design-minded developer, <span class="grad">systems-minded problem solver</span></h2>
+    <div class="about-grid">
+      <div class="reveal">
+        <p>I'm a Frontend / UI Developer with about 1.7 years of hands-on experience building responsive, user-friendly web interfaces with HTML5, CSS3, JavaScript, React, Bootstrap and jQuery.</p>
+        <p>I started with a Diploma and a B.Tech in Computer Engineering, trained as a React UI intern, and went on to ship UI work at Equipo Health. Today I support Microsoft Dynamics 365 Finance in Abu Dhabi, which gives me a sharp eye for how real teams use software every day.</p>
+        <p>I also use modern AI tools such as Claude, Cursor, Lovable, GitHub Copilot and Windsurf to build and ship websites faster.</p>
+      </div>
+      <div class="facts reveal">
+        <div class="fact"><small>Location</small><div>Abu Dhabi, United Arab Emirates</div></div>
+        <div class="fact"><small>Currently</small><div>IT Support (Dynamics 365 Finance) at ADMMI</div></div>
+        <div class="fact"><small>Looking for</small><div>IT Support, Website Development &amp; AI Development roles</div></div>
+        <div class="fact"><small>Education</small><div>B.Tech in Computer Engineering</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <div class="eyebrow reveal">Skills</div>
+    <h2 class="reveal">What I work with</h2>
+    <div class="skills">
+      <div class="card tilt reveal">
+        <h3>Frontend</h3>
+        <div class="lab"><span>HTML5 &amp; CSS3</span><span>90%</span></div><div class="bar"><i data-w="90"></i></div>
+        <div class="lab"><span>JavaScript</span><span>80%</span></div><div class="bar"><i data-w="80"></i></div>
+        <div class="lab"><span>React.js</span><span>78%</span></div><div class="bar"><i data-w="78"></i></div>
+        <div class="lab"><span>Bootstrap / jQuery</span><span>85%</span></div><div class="bar"><i data-w="85"></i></div>
+      </div>
+      <div class="card tilt reveal">
+        <h3>Design &amp; Tools</h3>
+        <div class="pills"><span>Figma</span><span>Git</span><span>GitHub</span><span>MySQL</span></div>
+      </div>
+      <div class="card tilt reveal">
+        <h3>Platforms &amp; Business Systems</h3>
+        <div class="pills"><span>Microsoft Dynamics 365</span><span>Shopify</span><span>Zoho Books</span><span>AP / AR / GL</span><span>Bank Reconciliation</span><span>UAT</span></div>
+      </div>
+      <div class="card tilt reveal">
+        <h3>AI-assisted Development</h3>
+        <div class="pills"><span>Claude</span><span>Cursor</span><span>Lovable</span><span>GitHub Copilot</span><span>Windsurf</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <div class="eyebrow reveal">Projects</div>
+    <h2 class="reveal">Featured work</h2>
+    <div class="projects">
+      <article class="card tilt proj reveal">
+        <div class="thumb t1">PayThem</div>
+        <h3>PayThem UI Clone</h3>
+        <p>A pixel-faithful, responsive payments interface built with React.js during my internship at MashupStack.</p>
+        <div class="pills" style="margin-bottom:14px"><span>React.js</span><span>CSS3</span><span>Responsive</span></div>
+        <a class="lnk" href="https://github.com/athiraathuz1997" target="_blank" rel="noopener">View on GitHub &#8599;</a>
+      </article>
+      <article class="card tilt proj reveal">
+        <div class="thumb t2">NETFLIX</div>
+        <h3>Netflix UI Clone</h3>
+        <p>A streaming-style home page with reusable components, rows and a responsive layout, built with React.js.</p>
+        <div class="pills" style="margin-bottom:14px"><span>React.js</span><span>JavaScript</span><span>Components</span></div>
+        <a class="lnk" href="https://github.com/athiraathuz1997" target="_blank" rel="noopener">View on GitHub &#8599;</a>
+      </article>
+      <article class="card tilt proj reveal">
+        <div class="thumb t3">Portfolio</div>
+        <h3>Personal Portfolio</h3>
+        <p>This site: an animated, three.js-powered portfolio showcasing my work, skills and experience.</p>
+        <div class="pills" style="margin-bottom:14px"><span>three.js</span><span>HTML5</span><span>CSS3</span><span>JavaScript</span></div>
+        <a class="lnk" href="https://github.com/athiraathuz1997" target="_blank" rel="noopener">View on GitHub &#8599;</a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <div class="eyebrow reveal">Journey</div>
+    <h2 class="reveal">Experience &amp; education</h2>
+    <div class="two">
+      <div class="timeline">
+        <div class="tl reveal">
+          <div class="when">Mar 2025 &ndash; Present</div>
+          <h3>IT Support</h3>
+          <div class="org">ADMMI &middot; Abu Dhabi, UAE</div>
+          <p>Supporting Microsoft Dynamics 365 Finance for Gray Mackenzie &amp; Partners: accounts payable, accounts receivable, general ledger, bank reconciliation and user acceptance testing (UAT).</p>
+        </div>
+        <div class="tl reveal">
+          <div class="when">Apr 2023 &ndash; Jul 2024</div>
+          <h3>UI Developer</h3>
+          <div class="org">Equipo Health (Equipo.io) &middot; India</div>
+          <p>Built and maintained responsive user interfaces with HTML5, CSS3, JavaScript, React and Bootstrap, turning Figma designs into production-ready screens.</p>
+        </div>
+        <div class="tl reveal">
+          <div class="when">6 months</div>
+          <h3>React UI Developer Intern</h3>
+          <div class="org">MashupStack</div>
+          <p>Learned modern React workflows and built the PayThem and Netflix UI clones.</p>
+        </div>
+      </div>
+      <div class="edu">
+        <div class="card reveal"><small>2018 &ndash; 2022</small><h3>B.Tech, Computer Engineering</h3></div>
+        <div class="card reveal"><small>2015 &ndash; 2018</small><h3>Diploma, Computer Engineering</h3><small>Govt. Women's Polytechnic College</small></div>
+        <div class="card reveal"><h3>Certifications</h3>
+          <div class="pills"><span>Introduction to Microsoft Dynamics 365 &middot; Coursera</span><span>UI Development Training &middot; Internshala</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="contact">
+  <div class="wrap">
+    <div class="box reveal">
+      <div class="eyebrow">Contact</div>
+      <h2>Let's build something <span class="grad">great</span></h2>
+      <p>I'm looking for IT support, website development and AI development roles. Say hello and let's talk.</p>
+      <div class="btns">
+        <a class="btn primary" id="mailBtn" href="#">Email me &rarr;</a>
+        <a class="btn ghost" href="https://github.com/athiraathuz1997" target="_blank" rel="noopener">GitHub &#8599;</a>
+        <a class="btn ghost" id="liBtn" href="#" target="_blank" rel="noopener">LinkedIn &#8599;</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>&copy; <span id="yr"></span> Athira Balachandran &middot; Designed &amp; built with three.js</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ===== EDIT ME ===== */
+const CONFIG = {
+  email: "",        // e.g. "you@example.com"  -> enables the Email button
+  linkedin: "",     // e.g. "https://www.linkedin.com/in/your-id"
+  photo: ""         // e.g. "me-cartoon.png" -> replaces the illustrated avatar
+};
+/* ==================== */
+
+document.getElementById('yr').textContent = new Date().getFullYear();
+const mail = document.getElementById('mailBtn'), li = document.getElementById('liBtn');
+if (CONFIG.email) mail.href = 'mailto:' + CONFIG.email; else mail.style.display = 'none';
+if (CONFIG.linkedin) li.href = CONFIG.linkedin; else li.style.display = 'none';
+if (CONFIG.photo) { const p = document.getElementById('photo'); p.src = CONFIG.photo; document.getElementById('avatar').classList.add('has-photo'); }
+
+/* mobile menu */
+const menu = document.getElementById('menu');
+document.getElementById('burger').onclick = () => menu.classList.toggle('open');
+menu.querySelectorAll('a').forEach(a => a.onclick = () => menu.classList.remove('open'));
+
+/* typing effect */
+const words = ['Frontend Developer', 'UI Developer', 'React Developer', 'Dynamics 365 Support Specialist'];
+const typed = document.getElementById('typed'); let wi = 0, ci = 0, del = false;
+(function tick(){
+  const w = words[wi];
+  typed.textContent = w.slice(0, ci += del ? -1 : 1);
+  let d = del ? 40 : 85;
+  if (!del && ci === w.length) { d = 1500; del = true; }
+  else if (del && ci === 0) { del = false; wi = (wi + 1) % words.length; d = 350; }
+  setTimeout(tick, d);
+})();
+
+/* reveal + counters + skill bars */
+const io = new IntersectionObserver(es => es.forEach(e => {
+  if (!e.isIntersecting) return;
+  e.target.classList.add('in');
+  e.target.querySelectorAll('.bar i').forEach(b => b.style.width = b.dataset.w + '%');
+  io.unobserve(e.target);
+}), { threshold: .15 });
+document.querySelectorAll('.reveal').forEach((el, i) => { el.style.transitionDelay = (i % 4) * 80 + 'ms'; io.observe(el); });
+
+document.querySelectorAll('[data-count]').forEach(el => {
+  const end = parseFloat(el.dataset.count), dec = +el.dataset.dec || 0, t0 = performance.now();
+  (function step(t){
+    const k = Math.min((t - t0) / 1600, 1), e = 1 - Math.pow(1 - k, 3);
+    el.textContent = (end * e).toFixed(dec);
+    if (k < 1) requestAnimationFrame(step);
+  })(t0);
+});
+
+/* nav highlight */
+const links = [...menu.querySelectorAll('a')];
+const spy = new IntersectionObserver(es => es.forEach(e => {
+  if (e.isIntersecting) links.forEach(l => l.classList.toggle('on', l.getAttribute('href') === '#' + e.target.id));
+}), { rootMargin: '-45% 0px -50% 0px' });
+document.querySelectorAll('section[id]').forEach(s => spy.observe(s));
+
+/* 3D card tilt */
+document.querySelectorAll('.tilt').forEach(c => {
+  c.addEventListener('mousemove', e => {
+    const r = c.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+    c.style.transform = `perspective(800px) rotateY(${x * 9}deg) rotateX(${-y * 9}deg) translateY(-4px)`;
+  });
+  c.addEventListener('mouseleave', () => c.style.transform = '');
+});
+
+/* cursor glow + avatar parallax */
+const glow = document.getElementById('glow'), av = document.getElementById('avatar');
+let mx = 0, my = 0;
+addEventListener('mousemove', e => {
+  mx = e.clientX / innerWidth - .5; my = e.clientY / innerHeight - .5;
+  glow.style.left = e.clientX + 'px'; glow.style.top = e.clientY + 'px';
+  av.style.transform = `rotateY(${mx * 14}deg) rotateX(${-my * 10}deg)`;
+});
+
+/* ===== three.js background ===== */
+(function(){
+  if (!window.THREE) return;
+  const canvas = document.getElementById('bg');
+  let renderer;
+  try { renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true }); } catch (e) { return; }
+  renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+  const scene = new THREE.Scene();
+  const cam = new THREE.PerspectiveCamera(60, 1, .1, 200); cam.position.z = 30;
+
+  /* particles */
+  const N = 1400, pos = new Float32Array(N * 3), col = new Float32Array(N * 3);
+  const c1 = new THREE.Color('#8b5cf6'), c2 = new THREE.Color('#22d3ee'), c3 = new THREE.Color('#f472b6');
+  for (let i = 0; i < N; i++) {
+    pos[i*3] = (Math.random() - .5) * 120; pos[i*3+1] = (Math.random() - .5) * 120; pos[i*3+2] = (Math.random() - .5) * 90;
+    const c = [c1, c2, c3][i % 3]; col.set([c.r, c.g, c.b], i * 3);
+  }
+  const pg = new THREE.BufferGeometry();
+  pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+  pg.setAttribute('color', new THREE.BufferAttribute(col, 3));
+  const points = new THREE.Points(pg, new THREE.PointsMaterial({ size: .28, vertexColors: true, transparent: true, opacity: .8, depthWrite: false }));
+  scene.add(points);
+
+  /* hero objects */
+  const knot = new THREE.Mesh(new THREE.TorusKnotGeometry(5, 1.4, 160, 18),
+    new THREE.MeshBasicMaterial({ color: 0x8b5cf6, wireframe: true, transparent: true, opacity: .28 }));
+  const ico = new THREE.Mesh(new THREE.IcosahedronGeometry(3, 1),
+    new THREE.MeshBasicMaterial({ color: 0x22d3ee, wireframe: true, transparent: true, opacity: .35 }));
+  const ring = new THREE.Mesh(new THREE.TorusGeometry(9, .06, 8, 120),
+    new THREE.MeshBasicMaterial({ color: 0xf472b6, transparent: true, opacity: .5 }));
+  const group = new THREE.Group(); group.add(knot, ico, ring); scene.add(group);
+
+  function size(){
+    const w = innerWidth, h = innerHeight; renderer.setSize(w, h, false); cam.aspect = w / h; cam.updateProjectionMatrix();
+    group.position.x = w > 860 ? -14 : 0; group.scale.setScalar(w > 860 ? 1 : .6);
+  }
+  addEventListener('resize', size); size();
+
+  let sy = 0; addEventListener('scroll', () => sy = scrollY / (document.body.scrollHeight - innerHeight || 1));
+  const clock = new THREE.Clock(), still = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let tx = 0, ty = 0;
+  (function loop(){
+    const t = clock.getElapsedTime();
+    tx += (mx - tx) * .05; ty += (my - ty) * .05;
+    knot.rotation.x = t * .15 + sy * 6; knot.rotation.y = t * .2;
+    ico.rotation.x = -t * .3; ico.rotation.y = t * .25;
+    ring.rotation.x = 1.2 + Math.sin(t * .4) * .3; ring.rotation.y = t * .1;
+    group.position.y = sy * 28 + Math.sin(t * .6) * .8;
+    points.rotation.y = t * .015 + tx * .3; points.rotation.x = ty * .2 + sy * .6;
+    cam.position.x = tx * 4; cam.position.y = -ty * 3; cam.lookAt(0, 0, 0);
+    renderer.render(scene, cam);
+    if (!still) requestAnimationFrame(loop);
+  })();
+})();
+</script>
+</body>
+</html>
